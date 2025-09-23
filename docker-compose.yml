@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  crypto-bot:
+    build: .
+    container_name: crypto-telegram-bot
+    restart: unless-stopped
+    volumes:
+      - ./config.yaml:/root/config.yaml:ro
+    environment:
+      - TZ=Asia/Shanghai
+    # Uncomment below if you need to expose a port for health checks
+    # ports:
+    #   - "8080:8080"

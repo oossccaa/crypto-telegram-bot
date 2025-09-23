@@ -1,0 +1,16 @@
+# Crypto Telegram Bot Configuration
+# 將此檔案複製為 config.yaml 並填入您的設定
+
+# Telegram Bot Token
+# 1. 在 Telegram 中搜尋 @BotFather
+# 2. 發送 /newbot 建立新的機器人
+# 3. 按照指示設定機器人名稱
+# 4. 取得 Bot Token 並填入下方
+bot_token: "YOUR_BOT_TOKEN_HERE"
+
+# Telegram Chat ID
+# 1. 將您的機器人加入到群組或私聊
+# 2. 發送一則訊息給機器人
+# 3. 訪問 https://api.telegram.org/bot<YOUR_BOT_TOKEN>/getUpdates
+# 4. 在回應中找到 "chat" -> "id" 的數值並填入下方
+chat_id: YOUR_CHAT_ID_HERE
