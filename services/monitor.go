@@ -45,15 +45,11 @@ func (m *MonitorService) SendStartupMessage() error {
 func (m *MonitorService) CheckPrices() error {
 	coinIDs := []string{"cardano", "ethereum"}
 
-	fmt.Printf("[DEBUG] Starting price check at %v\n", time.Now().Format("15:04:05"))
-
 	prices, err := m.coingecko.GetPrices(coinIDs)
 	if err != nil {
 		fmt.Printf("[ERROR] Failed to get prices: %v\n", err)
 		return fmt.Errorf("failed to get prices: %w", err)
 	}
-
-	fmt.Printf("[DEBUG] Got %d prices\n", len(prices))
 
 	for _, price := range prices {
 		if err := m.checkPriceChange(price); err != nil {
@@ -74,10 +70,6 @@ func (m *MonitorService) checkPriceChange(price models.CoinPrice) error {
 
 	change := price.Price - previousPrice
 	changePercent := (change / previousPrice) * 100
-
-	// 調試日志：每次檢查都打印
-	fmt.Printf("[DEBUG] %s: $%.6f -> $%.6f (%.3f%%)\n",
-		price.Symbol, previousPrice, price.Price, changePercent)
 
 	if math.Abs(changePercent) >= 0.2 { // 0.2% 觸發警報
 		priceChange := &models.PriceChange{
