@@ -25,7 +25,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 This is a Go-based cryptocurrency price monitoring Telegram bot with a clean modular architecture:
 
 ### Core Components
-- **main.go**: Entry point that orchestrates services and runs the monitoring loop (10-minute intervals)
+- **main.go**: Entry point that orchestrates services and runs the monitoring loop (5-minute intervals)
 - **config/**: YAML-based configuration management for Telegram credentials
 - **models/**: Data structures for CoinPrice and PriceChange
 - **services/**: Business logic layer with three key services
@@ -38,7 +38,7 @@ The application follows a service-oriented pattern:
 3. **MonitorService** (`services/monitor.go`): Core business logic that coordinates price checking, comparison, and alerting
 
 ### Data Flow
-1. MonitorService triggers price checks every 10 minutes
+1. MonitorService triggers price checks every 5 minutes
 2. Fetches current prices for ADA and ETH via CoinGeckoService
 3. Compares against stored previous prices
 4. If price change ≥ 0.5%, sends formatted alert via TelegramService
