@@ -24,8 +24,8 @@ WORKDIR /root/
 # Copy the binary from builder stage
 COPY --from=builder /app/crypto-bot .
 
-# Copy config file
-COPY --from=builder /app/config.yaml ./config.yaml
+# Copy config example file (users need to provide actual config.yaml via environment or volume mount)
+COPY --from=builder /app/config.yaml.example ./config.yaml.example
 
 # Expose port (if needed for health checks)
 EXPOSE 8080
