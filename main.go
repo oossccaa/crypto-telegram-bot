@@ -33,10 +33,10 @@ func main() {
 		monitorService.StartListening()
 	}()
 
-	ticker := time.NewTicker(5 * time.Minute)
+	ticker := time.NewTicker(10 * time.Minute)
 	defer ticker.Stop()
 
-	fmt.Println("Bot started successfully. Monitoring every 5 minutes...")
+	fmt.Println("Bot started successfully. Monitoring every 10 minutes...")
 
 	for range ticker.C {
 		if err := monitorService.CheckPrices(); err != nil {

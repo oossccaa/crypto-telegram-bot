@@ -70,7 +70,7 @@ func (m *MonitorService) checkPriceChange(price models.CoinPrice) error {
 	change := price.Price - previousPrice
 	changePercent := (change / previousPrice) * 100
 
-	if math.Abs(changePercent) >= 0.2 { // 0.2% 觸發警報
+	if math.Abs(changePercent) >= 1.0 { // 1.0% 觸發警報
 		priceChange := &models.PriceChange{
 			Coin:          price.Symbol,
 			CurrentPrice:  price.Price,
